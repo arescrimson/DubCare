@@ -2,7 +2,7 @@ DubCare README.
 
 ## About
 
-Created as a hackathon project for DubHacks 2023. FrontEnd created using StreamLit, a lightweight python frontend, while using Microsoft Azure Cognitive Services and OpenAI APIS as backend functionalities. Built in a team of Aryan Damle, Lwazi Mabota, and Ares Zhang. 
+Created as a hackathon project for DubHacks 2023. Project written in Python. FrontEnd created using StreamLit, while using Microsoft Azure Cognitive Services and OpenAI APIS as backend functionalities. Built in a team of Aryan Damle, Lwazi Mabota, and Ares Zhang. 
 
 ## Purpose 
 
