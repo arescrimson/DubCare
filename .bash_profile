@@ -1,4 +1,0 @@
-export SPEECH_KEY="03574393f26644b3aaa68af07ccadcf1"
-export SPEECH_REGION="westus"
-export SPEECH_KEY_RECOG="c3b9f8dc287749e4a3ef23c4c3d46e33"
-export SPEECH_REGION_RECOG="westus2"
