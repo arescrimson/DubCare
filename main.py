@@ -1,14 +1,13 @@
 import streamlit as st
 import openai
 from src.config import API_KEY
-import speech_synthesis
-import speech_ingest
 import azure.cognitiveservices.speech as speechsdk
+from googletrans import Translator
 
 # Set the title and favicon for your website
 st.set_page_config(
     page_title="DubCare",
-    page_icon="🏥"
+    page_icon="🏥"  
 )
 
 # Navigation Bar
@@ -16,6 +15,7 @@ st.sidebar.title("How DubCare Works:")
 page = st.sidebar.selectbox("\n", ["Home Page", "Speech to Text", "Live Interaction", "Text to Speech"])
 
 # Define the content for each page
+
 if page == "Home Page":
     st.title("DubCare")
     st.write("DubCare is a healthcare oriented technology which seeks to improve and strengthen connections between healthcare organizations and their users through the assistance of AI.")
@@ -37,8 +37,10 @@ elif page == "Speech to Text":
 
     st.audio(audio_bytes, format='audio/ogg') #displaying the audio
     
+    
 
 elif page == "Live Interaction":
+    
     st.title("💬 DubCare Live AI Help System ")
     listening = False 
     speech_config = speechsdk.SpeechConfig(subscription="c3b9f8dc287749e4a3ef23c4c3d46e33", region="westus2")
@@ -50,7 +52,7 @@ elif page == "Live Interaction":
         openai_api_key = API_KEY
 
     if "messages" not in st.session_state:
-        st.session_state["messages"] = [{"role": "assistant", "content": "What can I help PATIENT_NAME with today?"}]
+        st.session_state["messages"] = [{"role": "assistant", "content": "HI"}]
 
     for msg in st.session_state.messages:
         st.chat_message(msg["role"]).write(msg["content"])
@@ -69,6 +71,7 @@ elif page == "Live Interaction":
     if (st.button("End Microphone")): listening = False 
     
     openai.api_key = openai_api_key
+
     try:
         while listening:
             result = speech_recognizer.recognize_once_async().get()
@@ -90,10 +93,6 @@ elif page == "Live Interaction":
     finally:
          st.write("Microphone input stopped.")
          
-        
 elif page == "Text to Speech":
     st.title("🗣️ DubCare Text-to-Speech")
     st.write("This is where DubCare will utilize Microsoft Azure Text -> Speech Systems to convert the text into suitable Speech for the user.")
-    if st.button('Speech'):
-        speech_synthesis.speechSynth()
-        st.write("Hello User, I've got all your current information on file and your appointment with Dr. Miller is booked for Saturday at 12:00pm. We will see you then!")
